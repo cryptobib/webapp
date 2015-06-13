@@ -27,6 +27,8 @@ You need to use it only if you wan to create a mirror of the cryptobib website.
         cd web2py/applications
         ln -s ../../webapp cryptobib
 
+4. For a production server, you may want to remove all the other applications, or at least to restrict access to the admin application to local ips.
+
 In the sequel we suppose that you are in the `web2py` folder.
 
 ### Configure the application 
@@ -117,6 +119,8 @@ Run
 
 in the root folder.
 
+This operation has to be done after any modification of the database.
+
 ### Reload application
 
 Reload application:
@@ -133,9 +137,15 @@ Cache can be reloaded by:
 
 This can only be done from localhost.
 
-## Automatic update via Git hooks
+### Practical update script
 
-TODO
+It is practical to create the following script `update.sh`:
+
+    #!/bin/sh
+    mr update
+    make web
+    touch web2py/wsgihandler.py
+    curl -k https://localhost/crypto/admin/reload > /dev/null
 
 ## Administration / Backup
 
