@@ -106,7 +106,7 @@ def crypto_custom():
             out.write("\n\n")
 
     out = StringIO.StringIO()
-    out.write(lib.header.get_header("http://cryptobib.di.ens.fr/init/default/custom", years))
+    out.write(lib.header.get_header(module_db.config, "http://cryptobib.di.ens.fr/init/default/custom", years))
     gen_bib(out, years)
 
     return dict(result = out.getvalue())
