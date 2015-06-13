@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+
+#
+# 0_settings.py.sample: model/sample for the file 0_settings.py which
+# is not versionned as it contains passwords and other sensitive data
+#
+# You should normally copy this file to 0_settings.py and modify
+# 0_settings.py directly
+
+#
+# DB: uncomment the correct database
+#
+
+## For test purposes or small websites
+# db = DAL("sqlite://storage.sqlite")
+
+#
+# Development only (uncomment only if in development)
+#
+
+## automatically reload modules when modified
+## note: for wsgi production, you should touch wsgihandler.py to do that
+#from gluon.custom_import import track_changes; track_changes(True)

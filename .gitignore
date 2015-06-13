@@ -1,0 +1,12 @@
+*~
+\#*
+*.pyc
+/progress.log
+.pythonhistory
+!.gitignore
+
+/cache
+/databases
+/errors
+/sessions
+/uploads

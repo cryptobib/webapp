@@ -1,0 +1,79 @@
+{{extend 'layout.html'}}
+
+{{block header}}
+  <div class="jumbotron">
+    <div class="container">
+      <h1> Crypto Bib</h1>
+      <p>
+        Crypto Bib is a BibTeX database containing papers related to Cryptography, with manually checked entries and uniform BibTeX data.
+      </p>
+      <p>
+        <strong>Warning:</strong> If you used Crypto Bib before, some minor modifications have been made to it. In particular, the command <i>short_bib</i> and the file <i>conf.bib</i> have been replaced by four different <i>abbrev</i> files.
+      </p>
+      <p><a class="btn btn-success" href="{{=URL('default', 'manual')}}">Get started</a></p>
+    </div>
+  </div>
+{{end}}
+
+<div class="row">
+  <div class="col-md-4">
+    <h2>Easy to use</h2>
+    <p>Crypto Bib can be used as a classical BibTeX database.
+    BibTeX keys are short and easy to remember.</p>
+    <p><a class="btn btn-primary" href="{{=URL('default', 'manual')}}">Learn more</a></p>
+  </div>
+
+  <div class="col-md-4">
+    <h2>Customize it !&nbsp;&nbsp;<span class="badge" style="vertical-align: top">new</span></h2>
+    <p>Bibtex files can be easily customized to include only your favorite conferences and journals.</p>
+    <p><a class="btn btn-primary" href="{{=URL('default', 'custom')}}">Customize it</a></p>
+  </div>
+
+  <div class="col-md-4">
+    <h2>Manually checked</h2>
+    <p>Crypto Bib entries are imported from <a href="http://www.informatik.uni-trier.de/~ley/db">DBLP</a> and manually checked to make sure titles and authors are correctly rendered in LaTeX.</p>
+    <p>If you find any error, please <a href="{{=URL('default', 'about')}}">contact</a> us</p>
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Changes</h2>
+    <ul>
+      {{for c in changes:}}
+      <li><time datetime="{{=c.date}}" class="date_change">{{=c.date}}</time>: {{=c.desc}}</li>
+      {{pass}}
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Conferences and Journals in Crypto Bib</h2>
+
+{{def list_conf(confs):}}
+    <table class="table table-hover">
+      <tr>
+        <th>Acronym</th>
+        <th>Conference/Journal Name</th>
+        <th>Entries</th>
+      </tr>
+      {{for c in confs:}}
+      <tr>
+        <td>{{=c.name}}</td>
+        <td>{{=c.full_name}}</td>
+        <td>{{=c.start_year}} - {{=c.end_year}}</td>
+      </tr>
+      {{pass}}
+    </table>
+{{return}}
+
+    <h3>Conferences</h3>
+    {{list_conf(confs)}}
+
+    <h3>Journals</h3>
+    {{list_conf(journals)}}
+  </div>
+</div>

@@ -1,0 +1,190 @@
+{{extend 'layout.html'}}
+
+<div class="row">
+  <div class="col-md-3" role="complementary">
+    <div id="bs-sidebar" class="bs-sidebar hidden-print" role="complementary">
+      <ul class="nav bs-sidenav">
+        <li>
+          <a href="#getting-started">Getting started</a>
+          <ul class="nav">
+            <li><a href="#required-files">Required files</a></li>
+            <li><a href="#usage">Usage</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#labeling-conventions">Labeling conventions</a>
+          <ul class="nav">
+            <li><a href="#conf-labels">Conference/Journal/Misc labels</a></li>
+            <li><a href="#author-labels">Author labels</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-9" role="main">
+    <section>
+      <div class="page-header">
+        <h1 id="getting-started">Getting started</h1>
+      </div>
+
+      <div>
+        <h2 id="required-files">Required files</h2>
+      </div>
+
+      <p>You need to download and put in your paper's folder:</p>
+      <ul>
+        <li>one of the following files:
+          <ul>
+            <li><a href="{{=URL('static', 'files/abbrev0.bib')}}">abbrev0.bib</a>: for the most detailed entries;</li>
+            <li><a href="{{=URL('static', 'files/abbrev1.bib')}}">abbrev1.bib</a>: as <i>abbrev0.bib</i> but without days of conferences;</li>
+            <li><a href="{{=URL('static', 'files/abbrev2.bib')}}">abbrev2.bib</a>: as <i>abbrev0.bib</i> but with short names (for conferences, publishers, ...);</li>
+            <li><a href="{{=URL('static', 'files/abbrev3.bib')}}">abbrev3.bib</a>: a mix of <i>abbrev1.bib</i> and <i>abbrev2.bib;</i></li>
+          </ul>
+        </li>
+        <li>one of the following files:
+          <ul>
+            <li><a href="{{=URL('static', 'files/crypto.bib')}}">crypto.bib</a>: the actual legacy database;</li>
+            <li><a href="{{=URL('static', 'files/crypto_crossref.bib')}}">crypto_crossref.bib</a>: as <i>crypto.bib</i> but lighter thanks to cross-references;</li>
+            <li><a href="{{=URL('default', 'custom')}}">crypto_custom.bib</a>: a custom version of one of the above files which can be created <a href="{{=URL('default', 'custom')}}">here</a>.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>You can also get all of the above files at once by downloading <a href="{{=URL('static', 'files/crypto.zip', vars={'attachment': ''})}}">crypto.zip</a>.</p>
+
+      <div>
+        <h2 id="usage">Usage</h2>
+      </div>
+
+      You just need to include the two files you have chosen.
+      For example:
+      <ul>
+        <li><code>\bibliography{abbrev0,crypto}</code></li>
+        <li><code>\bibliography{abbrev1,crypto}</code></li>
+        <li><code>\bibliography{abbrev2,crypto_custom}</code></li>
+        <li><code>\bibliography{abbrev3,crypto_crossref}</code></li>
+      </ul>
+
+      If you use a version with cross-references, you may want to add the option <code>--min-crossrefs=1000</code> to <code>bibtex</code> to avoid having conferences in the bibliography.
+    </section>
+    <section>
+      <div class="page-header">
+        <h1 id="labeling-conventions">Labeling conventions</h1>
+      </div>
+
+      <p>Each label consists of a <i>Conference/Journal/Misc label</i> followed
+by a <i>colon (':')</i> followed an <i>Author label</i> and <i>the last
+2 digits of the publication year</i>. In case of collisions, a different
+letter is added at the end of each label starting with <i>'a'</i>:</p>
+      <p>
+        <code>
+&lt;Conference/Journal/Misc label&gt;:&lt;Author label&gt;&lt;2 last digits of publication year&gt;[a/b/...]
+        </code>
+      </p>
+
+      <p>
+        Here are some examples:
+        <ul>
+          <li><code>C:Shamir85</code></li>
+          <li><code>TCC:KatVai11</code></li>
+          <li><code>EC:ChaPhaPoi05</code></li>
+          <li><code>FOCS:GNRS99</code></li>
+        </ul>
+      </p>
+
+      <div>
+        <h2 id="conf-labels">Conference/Journal/Misc labels</h2>
+      </div>
+     
+      <h3>Conference labels</h3>
+
+      <table class="table table-hover">
+        <tr>
+          <th>Acronym</th>
+          <th class="td-border-right">Label</th>
+          <th>Acronym</th>
+          <th>Label</th>
+        </tr>
+        {{for (i,(conf_name, conf_key)) in enumerate(confs):}}
+        {{if i%2 == 0:}}<tr>{{pass}}
+          <td>{{=conf_name}}</t>
+            <td {{if i%2==0:}}class="td-border-right"{{pass}}><strong>{{=conf_key}}</strong></td>
+        {{if i%2 == 1:}}</tr>{{pass}}
+        {{pass}}
+        {{if len(confs)%2 == 1:}}
+        </tr>
+        {{pass}}
+      </table>
+
+      <h3>Journal labels</h3>
+
+      <table class="table table-half table-hover">
+        <tr>
+          <th>Acronym</th>
+          <th>Label</th>
+        </tr>
+        <tr>
+          <td>Journal of Cryptology</td>
+          <td><strong>JC</strong></td>
+        </tr>
+      </table>
+
+      <h3>Misc labels</h3>
+
+      <table class="table table-half table-hover">
+        <tr>
+          <th>Acronym</th>
+          <th>Label</th>
+        </tr>
+        <tr>
+          <td>IACR ePrint</td>
+          <td><strong>EPRINT</strong></td>
+        </tr>
+      </table>
+
+      <div>
+        <h2 id="author-labels">Author labels</h2>
+      </div>
+
+      <ul>
+        <li>
+          <b>Single-author papers</b>
+==&gt; Author's last name<br>
+Examples:
+          <ol>
+            <li>author = "Adi Shamir" ==&gt; Shamir</li>
+            <li>author = "Luke O'Connor" ==&gt; OConnor</li>
+          </ol>
+        </li>
+        <li>
+          <b>Papers with two or three authors</b>
+==&gt; First 3 letters of each author's last name<br>
+Examples:
+          <ol>
+            <li>author = "Mihir Bellare and Phillip Rogaway" ==&gt; BelRog</li>
+            <li>author = "Michel Abdalla and Sara Miner and Chanathip Namprempre" ==&gt; AbdMinNam</li>
+          </ol>
+        </li>
+        <li>
+          <b>Papers with four or more authors</b>
+==&gt; First letter of each author's last name (up to 6)<br>
+Examples:
+          <ol>
+            <li>author = "Kamel Bentahar and Pooya Farshim and John Malone-Lee and Nigel P. Smart" ==&gt; BFMS</li>
+            <li>author = "Don Coppersmith and Jean-Sebastien Coron and Fran\c{c}ois Grieu and Shai Halevi and Charanjit S. Jutla and David Naccache and Julien P. Stern" ==&gt; CCGHJN</li>
+          </ol>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+{{block page_js}}
+<script type="text/javascript"><!--
+  $('#bs-sidebar').affix({
+    offset: { top: $('#bs-sidebar').offset().top }
+  });
+  $('body').scrollspy({ target: '#bs-sidebar' });
+//-->
+</script>
+{{end}}

@@ -1,0 +1,89 @@
+{{extend 'layout.html'}}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <h1>Customize your <i>crypto.bib</i></h1>
+    </div>
+  </div>
+</div>
+
+<div class="ro<">
+  <div class="col-md-12">
+    <p>Please enter year ranges for each conference and click on <i>download</i> to get your custom <i>crypto.bib</i>:
+      <ul>
+        <li><code>-</code>: all years;</li>
+        <li><code>2000-</code>: all years from 2000;</li>
+        <li><code>-2010</code>: all years up to 2010;</li>
+        <li><code>2000-2010</code>: all years between 2000 and 2010.</li>
+      </ul>
+    </p>
+    <p>
+      To save your settings, just click on <i>check</i> and bookmark the resulting page. 
+    </p>
+  </div>
+</div>
+
+
+{{if "" in errors:}}
+  <div class="row">
+    <div class="col-md-12">
+      <p class="error">{{=errors[""]}}</p>
+    </div>
+  </div>
+{{pass}}
+{{if download_file!=None:}}
+  <iframe src="{{=download_file}}" class="download_file" id="download_file"></iframe>
+{{pass}}
+
+<div class="row">
+  <div class="col-md-12">
+    <form class="form-horizontal" role="form">
+      <fieldset>
+        <legend>General</legend>
+        <div class="col-md-6"></div>
+        <div class="col-md-3">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="crossrefs" value="true" {{='checked="checked"' if request.vars.crossrefs else ""}} />use cross-references
+            </label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="formgroup">
+            <button type="submit" class="btn btn-default" name="check">Check</button>
+            <button type="submit" class="btn btn-primary" name="download">Download</button>
+          </div>
+        </div>
+      </fieldset>
+      {{def chooseYears(name, confs):}}
+        <fieldset>
+          <legend>{{=name}}</legend>
+          {{for (i, conf) in enumerate(confs):}}
+            <div class="formgroup{{=' has-error' if conf['key'] in errors else ''}}">
+              <label for="years{{=conf['key']}}" class="col-md-2 control-label">{{=conf['name']}}</label>
+              <div class="col-md-2">
+                <input class="form-control" id="years{{=conf['key']}}" name="years{{=conf['key']}}" placeholder="{{=conf['start_year']}}-{{=conf['end_year']}}" value="{{= request.vars['years'+conf['key']] or ''}}" />
+              </div>
+            </div>
+          {{pass}}
+        </fieldset>
+      {{return}}
+      {{chooseYears("Conferences", confs)}}
+      {{chooseYears("Journals", journals)}}
+    </form>
+  </div>
+</div>
+
+{{block page_js}}
+  {{if download_file!=None:}}
+  <script type="text/javascript"><!--
+    $("#download_file").on("load", function(){
+     if($(this).contents().find("h1").length > 0) {
+        alert("An error occurred while generating the custom bibtex file.\nPlease try later or contact the author of the website.");
+     }
+    });
+  // -->
+  </script>
+  {{pass}}
+{{end}}
