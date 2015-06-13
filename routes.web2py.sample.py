@@ -11,7 +11,7 @@ path_prefix = ""
 
 routers = dict(
     BASE = dict(
-        default_application = "crypto",
+        default_application = "cryptobib",
         path_prefix = path_prefix,
     ),
 )
