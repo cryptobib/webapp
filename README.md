@@ -142,6 +142,9 @@ This can only be done from localhost.
 It is practical to create the following script `update.sh`:
 
     #!/bin/sh
+    set -e
+    (cd export && git reset --hard HEAD)
+    (cd export_crossref && git reset --hard HEAD)
     mr update
     make web
     touch web2py/wsgihandler.py
