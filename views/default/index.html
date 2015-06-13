@@ -3,12 +3,12 @@
 {{block header}}
   <div class="jumbotron">
     <div class="container">
-      <h1> Crypto Bib</h1>
+      <h1> CryptoBib</h1>
       <p>
-        Crypto Bib is a BibTeX database containing papers related to Cryptography, with manually checked entries and uniform BibTeX data.
+        CryptoBib is a BibTeX database containing papers related to Cryptography, with manually checked entries and uniform BibTeX data.
       </p>
       <p>
-        <strong>Warning:</strong> If you used Crypto Bib before, some minor modifications have been made to it. In particular, the command <i>short_bib</i> and the file <i>conf.bib</i> have been replaced by four different <i>abbrev</i> files.
+        <strong>Warning:</strong> If you used CryptoBib before, some minor modifications have been made to it. In particular, the command <i>short_bib</i> and the file <i>conf.bib</i> have been replaced by four different <i>abbrev</i> files.
       </p>
       <p><a class="btn btn-success" href="{{=URL('default', 'manual')}}">Get started</a></p>
     </div>
@@ -16,22 +16,28 @@
 {{end}}
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
     <h2>Easy to use</h2>
-    <p>Crypto Bib can be used as a classical BibTeX database.
+    <p>CryptoBib can be used as a classical BibTeX database.
     BibTeX keys are short and easy to remember.</p>
     <p><a class="btn btn-primary" href="{{=URL('default', 'manual')}}">Learn more</a></p>
   </div>
 
-  <div class="col-md-4">
-    <h2>Customize it !&nbsp;&nbsp;<span class="badge" style="vertical-align: top">new</span></h2>
+  <div class="col-md-3">
+    <h2>Customize it!</h2>
     <p>Bibtex files can be easily customized to include only your favorite conferences and journals.</p>
     <p><a class="btn btn-primary" href="{{=URL('default', 'custom')}}">Customize it</a></p>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-3">
+    <h2>GitHub&nbsp;<span class="badge" style="vertical-align: top">new</span></h2>
+    <p>The code is now open source, and you can now add cryptobib files as an SVN external project or a Git submodule to always stay up to date!</p>
+    <p><a class="btn btn-primary" href="{{=URL('default', 'manual')}}">See manual</a><a class="btn btn-primary" href="https://github.com/cryptobib">GitHub</a></p>
+  </div>
+
+  <div class="col-md-3">
     <h2>Manually checked</h2>
-    <p>Crypto Bib entries are imported from <a href="http://www.informatik.uni-trier.de/~ley/db">DBLP</a> and manually checked to make sure titles and authors are correctly rendered in LaTeX.</p>
+    <p>CryptoBib entries are imported from <a href="http://www.informatik.uni-trier.de/~ley/db">DBLP</a> and manually checked to make sure titles and authors are correctly rendered in LaTeX.</p>
     <p>If you find any error, please <a href="{{=URL('default', 'about')}}">contact</a> us</p>
   </div>
 </div>
@@ -51,7 +57,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h2>Conferences and Journals in Crypto Bib</h2>
+    <h2>Conferences and Journals in CryptoBib</h2>
 
 {{def list_conf(confs):}}
     <table class="table table-hover">

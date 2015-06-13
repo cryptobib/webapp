@@ -53,6 +53,33 @@
       <p>You can also get all of the above files at once by downloading <a href="{{=URL('static', 'files/crypto.zip', vars={'attachment': ''})}}">crypto.zip</a>.</p>
 
       <div>
+        <h3>Automatic update using Git submodules or SVN externals</h3>
+      </div>
+
+      <p>
+        If your paper's project is on git, you can use one of the following GitHub repositories as submodules to make updates more practical: <a href="https://github.com/cryptobib/export">cryptobib/export</a> (for <i>crypto.bib</i>) or <a href="https://github.com/cryptobib/export_crossref">cryptobib/export_crossref</a> (for <i>crypto_crossref.bib</i>).
+      </p>
+
+      <p>Here is a small cheatsheet on how to use submodules:</p>
+      <ul>
+        <li>Add the submodule to your paper's project:
+          <br />
+          <code>
+git submodule add https://github.com/cryptobib/export cryptobib
+          </code>
+        </li>
+        <li>Update cryptobib: 
+          <br />
+          <code>( cd cryptobib && git pull origin master ) </code></li>
+        <li>Initialize and retrieve cryptobib after a <code>git clone</code>: 
+          <br />
+          <code>git submodule init && git submodule update</code>
+        </li>
+      </ul>
+
+      <p>These repositories can also be used as SVN externals, as GitHub also provides an SVN access.</p>
+
+      <div>
         <h2 id="usage">Usage</h2>
       </div>
 
