@@ -79,20 +79,35 @@ git submodule add https://github.com/cryptobib/export cryptobib
 
       <p>These repositories can also be used as SVN externals, as GitHub also provides an SVN access.</p>
 
+      <p>Here is a small cheatsheet on how to use SVN externals:</p>
+      <ul>
+        <li>Edit the property <code>svn:externals</code> using <code>svn propedit svn:externals .</code> and add the following line:
+          <br />
+          <code>
+cryptobib https://github.com/cryptobib/export/trunk
+          </code>
+        </li>
+        <li>Cryptobib files are then automatically retrieved/updated when you run <code>svn up</code>.
+        </li>
+      </ul>
+
       <div>
         <h2 id="usage">Usage</h2>
       </div>
 
-      You just need to include the two files you have chosen.
-      For example:
-      <ul>
-        <li><code>\bibliography{abbrev0,crypto}</code></li>
-        <li><code>\bibliography{abbrev1,crypto}</code></li>
-        <li><code>\bibliography{abbrev2,crypto_custom}</code></li>
-        <li><code>\bibliography{abbrev3,crypto_crossref}</code></li>
-      </ul>
+      <p>
+        You just need to include the two files you have chosen.
+        For example:
+        <ul>
+          <li><code>\bibliography{abbrev0,crypto}</code></li>
+          <li><code>\bibliography{abbrev1,crypto}</code></li>
+          <li><code>\bibliography{abbrev2,crypto_custom}</code></li>
+          <li><code>\bibliography{abbrev3,crypto_crossref}</code></li>
+          <li><code>\bibliography{cryptobib/abbrev3,cryptobib/crypto}</code> (when using Git submodules or SVN externals)</li>
+        </ul>
+      </p>
 
-      If you use a version with cross-references, you may want to add the option <code>--min-crossrefs=1000</code> to <code>bibtex</code> to avoid having conferences in the bibliography.
+      <p>If you use a version with cross-references, you may want to add the option <code>--min-crossrefs=1000</code> to <code>bibtex</code> to avoid having conferences in the bibliography.</p>
     </section>
     <section>
       <div class="page-header">
