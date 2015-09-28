@@ -33,14 +33,14 @@ In the sequel we suppose that you are in the `web2py` folder.
 
 ### Configure the application 
 
-1. create folders in `applications/crypto`
+1. create folders in `applications/cryptobib`
 
-        mkdir applications/crypto/cache applications/crypto/databases applications/crypto/errors applications/crypto/sessions applications/crypto/uploads
+        mkdir applications/cryptobib/cache applications/cryptobib/databases applications/cryptobib/errors applications/cryptobib/sessions applications/cryptobib/uploads
 
-2. copy `applications/crypto/routes.web2py.sample.py` to `routes.py` and change it
-3. copy `applications/crypto/models/0_settings.py.sample` to `applications/crypto/models/0_settings.py` and change it to connect to the correct database
+2. copy `applications/cryptobib/routes.web2py.sample.py` to `routes.py` and change it
+3. copy `applications/cryptobib/models/0_settings.py.sample` to `applications/cryptobib/models/0_settings.py` and change it to connect to the correct database
 
-You may want to update `applications/crypto/models/1_settings.py` too.
+You may want to update `applications/cryptobib/models/1_settings.py` too.
 
 ### Run the application
 
