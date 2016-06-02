@@ -27,6 +27,10 @@
         <h1 id="getting-started">Getting started</h1>
       </div>
 
+      <p>
+        <strong>Warning:</strong> If you used CryptoBib before, some minor modifications have been made to it. In particular, the command <i>short_bib</i> and the file <i>conf.bib</i> have been replaced by four different <i>abbrev</i> files.
+      </p>
+
       <div>
         <h2 id="required-files">Required files</h2>
       </div>
@@ -71,9 +75,9 @@ git submodule add https://github.com/cryptobib/export cryptobib
         <li>Update cryptobib: 
           <br />
           <code>( cd cryptobib && git pull origin master ) </code></li>
-        <li>Initialize and retrieve cryptobib after a <code>git clone</code>: 
+        <li>Retrieve cryptobib after <code>git clone</code> or <code>git pull</code>: 
           <br />
-          <code>git submodule init && git submodule update</code>
+          <code>git submodule update --init</code>
         </li>
       </ul>
 

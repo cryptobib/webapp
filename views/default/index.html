@@ -5,10 +5,8 @@
     <div class="container">
       <h1> CryptoBib</h1>
       <p>
-        CryptoBib is a BibTeX database containing papers related to Cryptography, with manually checked entries and uniform BibTeX data.
-      </p>
-      <p>
-        <strong>Warning:</strong> If you used CryptoBib before, some minor modifications have been made to it. In particular, the command <i>short_bib</i> and the file <i>conf.bib</i> have been replaced by four different <i>abbrev</i> files.
+        CryptoBib is a BibTeX database containing papers related to Cryptography, with manually checked entries and uniform BibTeX data. CryptoBib can be used as a classical BibTeX database.
+        BibTeX keys are short and easy to remember.
       </p>
       <p><a class="btn btn-success" href="{{=URL('default', 'manual')}}">Get started</a></p>
     </div>
@@ -17,26 +15,51 @@
 
 <div class="row">
   <div class="col-md-3">
-    <h2>Easy to use</h2>
-    <p>CryptoBib can be used as a classical BibTeX database.
-    BibTeX keys are short and easy to remember.</p>
-    <p><a class="btn btn-primary" href="{{=URL('default', 'manual')}}">Learn more</a></p>
+    <h2>Download</h2>
+    Download
+    <ul>
+      <li>one of these files:
+        <ul>
+          <li><a href="{{=URL('static', 'files/abbrev0.bib')}}">abbrev0.bib</a> (most detailed)</li>
+          <li><a href="{{=URL('static', 'files/abbrev1.bib')}}">abbrev1.bib</a> (w/o conf. days)</li>
+          <li><a href="{{=URL('static', 'files/abbrev2.bib')}}">abbrev2.bib</a> (short names)</li>
+          <li><a href="{{=URL('static', 'files/abbrev3.bib')}}">abbrev3.bib</a> (least detailed)</li>
+        </ul>
+      </li>
+      <li>and one of those:
+        <ul>
+          <li><a href="{{=URL('static', 'files/crypto.bib')}}">crypto.bib</a></li>
+          <li><a href="{{=URL('static', 'files/crypto_crossref.bib')}}">crypto_crossref.bib</a></li>
+          <li><a href="{{=URL('default', 'custom')}}">crypto_custom.bib</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
-
-  <div class="col-md-3">
-    <h2>Customize it!</h2>
-    <p>Bibtex files can be easily customized to include only your favorite conferences and journals.</p>
-    <p><a class="btn btn-primary" href="{{=URL('default', 'custom')}}">Customize it</a></p>
-  </div>
-
-  <div class="col-md-3">
-    <h2>GitHub&nbsp;<span class="badge" style="vertical-align: top">new</span></h2>
-    <p>The code is now open source, and you can now add cryptobib files as an SVN external project or a Git submodule to always stay up to date!</p>
+  
+  <div class="col-md-6">
+    <h2>GitHub</h2>
+    <p>The code is now open source, and you can now add cryptobib files as an SVN external project or a Git submodule to always stay up to date:</p>
+    <ul>
+      <li>Add the submodule to your paper's project:
+        <br />
+        <code>
+git submodule add https://github.com/cryptobib/export cryptobib
+        </code>
+      </li>
+      <li>Update cryptobib: 
+        <br />
+        <code>( cd cryptobib && git pull origin master ) </code>
+      </li>
+      <li>Retrieve cryptobib after <code>git clone</code> or <code>git pull</code>: 
+        <br />
+        <code>git submodule update --init</code>
+      </li>
+    </ul>
     <p><a class="btn btn-primary" href="{{=URL('default', 'manual')}}">See manual</a><a class="btn btn-primary" href="https://github.com/cryptobib">GitHub</a></p>
   </div>
 
   <div class="col-md-3">
-    <h2>Manually checked</h2>
+    <h2>Help us improve it</h2>
     <p>CryptoBib entries are imported from <a href="http://www.informatik.uni-trier.de/~ley/db">DBLP</a> and manually checked to make sure titles and authors are correctly rendered in LaTeX.</p>
     <p>If you find any error, please <a href="{{=URL('default', 'about')}}">contact</a> us</p>
   </div>
