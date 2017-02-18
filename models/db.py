@@ -33,8 +33,8 @@ db.define_table(
     Field("key_auth"),              # ex: KatVai
     Field("key_dis"),               # ex: a
 
-    Field("start_page", "integer"), # ex: 636
-    Field("end_page", "integer"),   # ex: 652
+    Field("start_page"),            # ex: 636, 5:1  (for LIPIcs)
+    Field("end_page"),              # ex: 652, 5:15 (for LIPIcs)
     
     Field("address"),
     Field("abstract"),
