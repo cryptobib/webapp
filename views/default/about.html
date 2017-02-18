@@ -7,21 +7,71 @@
     </div>
 
     <p>
-The Crypto Bib database is maintained by <a href="http://www.di.ens.fr/~mabdalla">Michel Abdalla</a> and <a href="http://www.normalesup.org/~fbenhamo">Fabrice Benhamouda</a>.
-It was created by Michel Abdalla.
+      The CryptoBib database is maintained by <a href="http://www.di.ens.fr/~mabdalla">Michel Abdalla</a> and <a href="http://www.normalesup.org/~fbenhamo">Fabrice Benhamouda</a>.
+      It was created by Michel Abdalla.
     </p>
 
     <p>
-If you have any remarks or corrections, please contact us at <a href="michel.abdalla (at) ens.fr">firstname.lastname (at) ens.fr</a>.
+      We thank all the people who contributed to CryptoBib by sending remarks, suggestions or corrections.
     </p>
 
     <p>
-      You can also directly submit a <strong>pull request</strong> or <strong>report an issue</strong> on <a href="https://github.com/cryptobib/db">cryptobib/db GitHub project</a>.
-This is now the preferred way of reporting an error.
+      This website has been built using <a href="http://getbootstrap.com">Twitter Bootstrap</a> and is powered by <a href="http://www.web2py.com">web2py</a>.
+    </p>
+
+    <div>
+      <h2>Remarks, suggestions, and corrections</h2>
+    </div>
+
+    <p>
+      You can directly submit a <strong>pull request</strong> or <strong>report an issue</strong> on <a href="https://github.com/cryptobib/db">cryptobib/db GitHub project</a>.
+      This is now the preferred way of reporting an error. A detailed tutorial on how to submit a <strong>pull request</strong>      is provided below.
     </p>
 
     <p>
-This website has been built using <a href="http://getbootstrap.com">Twitter Bootstrap</a> and is powered by <a href="http://www.web2py.com">web2py</a>.
+      You can also contact us at <a href="michel.abdalla (at) ens.fr">firstname.lastname (at) ens.fr</a>.
+    </p>
+
+    <div>
+      <h3>How to submit a pull request</h3>
+    </div>
+
+    <ol>
+      <li>Create an account on <a href="https://github.com">GitHub</a> and log in using this account. In the sequel, we assume
+        that your login is <code>[username]</code>.</li>
+      <li>Go to <a href="https://github.com/cryptobib/db">https://github.com/cryptobib/db</a>. </li>
+      <li>Fork the project (button "Fork" on the top right). You will now have a fork of <code>cryptobib/db</code> named <code>username/db</code>        in your GitHub account. Contrary to <code>cryptobib/db</code>, you are allowed to modify (push new commits to) this
+        repository.</li>
+      <li>Clone this git repository on your computer: <code>git clone https://github.com/[username]/db.git</code>.</li>
+      <li>Do the modifications. Note: the files <code>abbrev0.yml</code>, <code>abbrev1.yml</code>, <code>abbrev2.yml</code> and <code>abbrev3.yml</code> are automatically generated from <code>abbrev.bibyml</code>. The files <code>crypto.bib</code> and <code>crypto_crossref.bib</code> are automatically generated from <code>crypto_db.bib</code>, <code>crypto_conf_list.bib</code>, and <code>crypto_misc.bib</code>. You will most likely have to change <code>crypto_db.bib</code>.</li>
+      <li>Commit your changes: <code>git commit -a -m "a message"</code>.</li>
+      <li>Push them to your fork: <code>git push</code>.</li>
+      <li>Send a pull request to us, by clicking on "New pull request" on <a href="https://github.com/[username]/db">https://github.com/[username]/db</a>, entering a description, and then clicking on "Create pull request".</li>
+    </ol>
+
+    <p>
+      You can then remove your fork <code>username/db</code> by going to "Settings" and then "Delete this repository". 
+    </p>
+
+    <p>
+      If
+      you do not do it and if you want to send later another pull request, you should not forget to update your fork either
+      via the <a href="https://help.github.com/articles/syncing-a-fork/">command line</a> or via the <a href="https://www.sitepoint.com/quick-tip-sync-your-fork-with-the-original-without-the-cli">GitHub web interface</a>.
+    </p>
+
+    <div>
+      <h2>Understanding the GitHub repositories</h2>
+    </div>
+
+    <p>If you are only interested in using CryptoBib, the only two GitHub repositories that you will ever use are <a href="https://github.com/cryptobib/export">https://github.com/cryptobib/export</a> and <a href="https://github.com/cryptobib/export_crossref">https://github.com/cryptobib/export_crossref</a>.
+    These repositories are automatically generated from <a href="https://github.com/cryptobib/db">https://github.com/cryptobib/db</a>.
+    </p>
+
+    <p>If you want to submit corrections or remarks (either via a bug report or a pull request), you should do it on <a href="https://github.com/cryptobib/db">https://github.com/cryptobib/db</a>, as explained above.
+    </p>
+
+    <p>The other repositories contain the website and the tools to generate and test the CryptoBib bib files.
+      The documentation is provided in <a href="https://github.com/cryptobib/cryptobib">https://github.com/cryptobib/cryptobib</a>.
     </p>
 
   </div>
