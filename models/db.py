@@ -50,6 +50,7 @@ db.define_table(
     Field("eprint"),
     Field("howpublished"),
     Field("institution"),
+    Field("issn"),
     Field("journal"),
     Field("key"),
     Field("keywords"),
