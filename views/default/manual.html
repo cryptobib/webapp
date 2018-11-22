@@ -144,12 +144,15 @@ letter is added at the end of each label starting with <i>'a'</i>:</p>
      
       <h3>Conference labels</h3>
 
+{{def list_conf(confs):}}
       <table class="table table-hover">
         <tr>
           <th>Acronym</th>
           <th class="td-border-right">Label</th>
+          {{if len(confs) > 1:}}
           <th>Acronym</th>
           <th>Label</th>
+          {{pass}}
         </tr>
         {{for (i,(conf_name, conf_key)) in enumerate(confs):}}
         {{if i%2 == 0:}}<tr>{{pass}}
@@ -161,40 +164,17 @@ letter is added at the end of each label starting with <i>'a'</i>:</p>
         </tr>
         {{pass}}
       </table>
+{{return}}
+
+      {{list_conf(confs)}}
 
       <h3>Journal labels</h3>
 
-      <table class="table table-half table-hover">
-        <tr>
-          <th>Acronym</th>
-          <th>Label</th>
-        </tr>
-        <tr>
-          <td>Journal of Cryptology</td>
-          <td><strong>JC</strong></td>
-        </tr>
-        <tr>
-          <td>IACR Transactions on Cryptographic Hardware and Embedded Systems</td>
-          <td><strong>TCHES</strong></td>
-        </tr>
-        <tr>
-          <td>IACR Transactions on Symmetric Cryptology</td>
-          <td><strong>ToSC</strong></td>
-        </tr>
-      </table>
+      {{list_conf(journals)}}
 
       <h3>Misc labels</h3>
 
-      <table class="table table-half table-hover">
-        <tr>
-          <th>Acronym</th>
-          <th>Label</th>
-        </tr>
-        <tr>
-          <td>IACR ePrint</td>
-          <td><strong>EPRINT</strong></td>
-        </tr>
-      </table>
+      {{list_conf(misc)}}
 
       <div>
         <h2 id="author-labels">Author labels</h2>

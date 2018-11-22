@@ -18,16 +18,22 @@ generator.config = module_db.config
 def index():
     confs = db(db.conf.type=="conf").select(db.conf.ALL, orderby=db.conf.name)
     journals = db(db.conf.type=="journal").select(db.conf.ALL, orderby=db.conf.name)
+    misc = db(db.conf.type=="misc").select(db.conf.ALL, orderby=db.conf.name)
     changes = db().select(db.change.ALL, orderby=~db.change.date)
 
-    return dict(confs = confs, journals = journals, changes = changes)
+    return dict(confs=confs, journals=journals, misc=misc, changes=changes)
 
 @cache.action(cache_model=cache.ram)
 def manual():
-    confs_dict = db(db.conf.type=="conf").select(db.conf.key, db.conf.name, orderby=db.conf.name)
-    confs = [(c["name"],c["key"]) for c in confs_dict]
+    def get_list_keys(conf_type):
+        d = db(db.conf.type==conf_type).select(db.conf.key, db.conf.name, orderby=db.conf.name)
+        return [(c["name"],c["key"]) for c in d]
 
-    return dict(confs = confs)
+    confs = get_list_keys("conf")
+    journals = get_list_keys("journal")
+    misc = get_list_keys("misc")
+
+    return dict(confs=confs, journals=journals, misc=misc)
 
 @cache.action(cache_model=cache.ram)
 def about():
