@@ -56,7 +56,7 @@ db.define_table(
     Field("keywords"),
     Field("month"),
     Field("note"),
-    Field("number", "integer"),
+    Field("number"),
     Field("organization"),
     Field("publisher"),
     Field("school"),
