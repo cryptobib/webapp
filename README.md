@@ -11,7 +11,7 @@ You need to use it only if you wan to create a mirror of the cryptobib website.
 
 ### Requirements
 
-- python2.7
+- python >= 3.5
 - pip (if you want to install python libraries below)
 - httplib2, ...
 - ipython (not necessary bu recommended for shell)
@@ -20,7 +20,7 @@ You need to use it only if you wan to create a mirror of the cryptobib website.
 
 ### Download web2py and install the application
 
-1. Download web2py 2.11.2 source code from http://web2py.com/init/default/download
+1. Download web2py 2.20.4 source code from http://web2py.com/init/default/download
 2. Unzip it under the root folder `cryptobib`
 3. Create a link from `webapp` to the subfolder `web2py/applications/cryptobib`:
 
@@ -48,11 +48,11 @@ You may want to update `applications/cryptobib/models/1_settings.py` too.
 
 In development, just run
 
-    python2 web2py.py
+    python3 web2py.py
 
 #### Production
 
-For production, we recommand you to run it as a wsgi script on an Apache server:
+For production, we recommend you to run it as a wsgi script on an Apache server:
 
 1. copy `handlers/wsgihandler.py` to `wsgihandler.py`
 2. set the admin password

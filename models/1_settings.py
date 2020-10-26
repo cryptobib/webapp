@@ -2,8 +2,8 @@
 
 ## Title, ...
 
-response.title = u"CryptoBib"
-response.navbar_title = u"CryptoBib"
+response.title = "CryptoBib"
+response.navbar_title = "CryptoBib"
 response.logo = A("CryptoBib", _class = "navbar-brand", _href = URL('default', 'index'))
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html

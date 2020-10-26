@@ -2,7 +2,7 @@
 
 import os
 import re
-import StringIO
+import io
 
 from lib.mybibtex.database import EntryKey, EntryKeyParsingError
 from lib.mybibtex import generator
@@ -51,8 +51,8 @@ def custom():
     if request.vars.download != None or request.vars.check != None:
         (errors_confs, years_confs, nb_confs) = get_years(confs, request.vars)
         (errors_journals, years_journals, nb_journals) = get_years(journals, request.vars)
-        errors = dict(errors_confs.items() + errors_journals.items())
-        years = dict(years_confs.items() + years_journals.items())
+        errors = dict(list(errors_confs.items()) + list(errors_journals.items()))
+        years = dict(list(years_confs.items()) + list(years_journals.items()))
         nb = nb_confs + nb_journals
 
         if len(errors) > 0:
@@ -76,14 +76,14 @@ def crypto_custom():
     (errors_confs, years_confs, nb_confs) = get_years(confs, request.vars)
     (errors_journals, years_journals, nb_journals) = get_years(journals, request.vars)
     nb = nb_confs + nb_journals
-    years = dict(years_confs.items() + years_journals.items())
+    years = dict(list(years_confs.items()) + list(years_journals.items()))
     
     if nb == 0 or len(errors_confs) > 0 or len(errors_journals) > 0:
         raise HTTP(400, "bad query")
 
     def gen_bib(out, years):
         q = None
-        for (confkey, (start_year, end_year)) in years.iteritems():
+        for (confkey, (start_year, end_year)) in years.items():
             q2 = db.entry.key_conf==confkey
             q2 = q2 & (db.entry.key_year >= start_year)
             q2 = q2 & (db.entry.key_year <= end_year)
@@ -100,7 +100,7 @@ def crypto_custom():
             for entry in entries.find(lambda x: x.key_auth == None):
                 crossref = entry.as_dict()
                 crossref["key"] = None # A bit of a hack... TODO...
-                crossrefs[unicode(EntryKey(confkey=entry.key_conf, year=entry.key_year, dis=entry.key_dis))] = crossref
+                crossrefs[str(EntryKey(confkey=entry.key_conf, year=entry.key_year, dis=entry.key_dis))] = crossref
 
         for entry in entries:
             if expand_crossrefs and entry.key_auth == None:
@@ -111,7 +111,7 @@ def crypto_custom():
                 generator.sql_write_entry(out, entry)
             out.write("\n\n")
 
-    out = StringIO.StringIO()
+    out = io.StringIO()
     out.write(lib.header.get_header(module_db.config, "http://cryptobib.di.ens.fr/init/default/custom", years))
     gen_bib(out, years)
 
@@ -124,7 +124,7 @@ def entry():
     else:
         try:
             key = EntryKey.from_string(key_str)
-        except EntryKeyParsingError, e:
+        except EntryKeyParsingError as e:
             raise HTTP(404, 'bad format for key (not "CONF/AuthYY")')
         else:
             if key in bibdb.entry:

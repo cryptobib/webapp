@@ -10,15 +10,15 @@ import gluon.shell
 from gluon.storage import Storage
 
 def main():
-    if raw_input("are you sure to erase everything (YES / NO)? ") == "YES":
+    if input("are you sure to erase everything (YES / NO)? ") == "YES":
         env = Storage(gluon.shell.env("crypto", import_models = True))
         for table_name in env.db.tables():
             try:
-                print 'Truncate "%s"' % table_name
+                print('Truncate "%s"' % table_name)
                 env.db[table_name].truncate()
             except:
-                print env.db._lastsql
-                print traceback.format_exc()
+                print(env.db._lastsql)
+                print(traceback.format_exc())
         env.db.commit()
 
 if __name__ == "__main__":
