@@ -37,8 +37,8 @@ In the sequel we suppose that you are in the `web2py` folder.
 
         mkdir applications/cryptobib/cache applications/cryptobib/databases applications/cryptobib/errors applications/cryptobib/sessions applications/cryptobib/uploads
 
-2. copy `applications/cryptobib/routes.web2py.sample.py` to `routes.py` and change it
-3. copy `applications/cryptobib/models/0_settings.py.sample` to `applications/cryptobib/models/0_settings.py` and change it to connect to the correct database
+2. `cp applications/cryptobib/routes.web2py.sample.py routes.py` and change it
+3. `cp applications/cryptobib/models/0_settings.py.sample applications/cryptobib/models/0_settings.py` and change it to connect to the correct database
 
 You may want to update `applications/cryptobib/models/1_settings.py` too.
 
